@@ -1,13 +1,15 @@
 import pandas as pd
 import requests
 
-URL_SELIC = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json"
+URL_SELIC = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados"
 
 
 def extrair_selic():
     """Busca a meta Selic na API do Banco Central."""
-    resposta = requests.get(URL_SELIC, timeout=30)
-    resposta.raise_for_status()   # se a API falhar, o pipeline para aqui
+    params = {"formato": "json", "dataInicial": "01/01/2024", "dataFinal": "31/12/2025"}
+    headers = {"Accept": "application/json", "User-Agent": "Mozilla/5.0 (projeto-estudo)"}
+    resposta = requests.get(URL_SELIC, params=params, headers=headers, timeout=30)
+    resposta.raise_for_status()
     df = pd.DataFrame(resposta.json())
     df["data"] = pd.to_datetime(df["data"], format="%d/%m/%Y")
     df["valor"] = df["valor"].astype(float)

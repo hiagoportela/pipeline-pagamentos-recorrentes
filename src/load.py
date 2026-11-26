@@ -14,5 +14,6 @@ def carregar(clientes, cobrancas, rejeitadas):
         clientes.to_sql("clientes", conn, if_exists="replace", index=False)
         cobrancas.to_sql("cobrancas", conn, if_exists="replace", index=False)
         rejeitadas.to_sql("cobrancas_rejeitadas", conn, if_exists="replace", index=False)
+       
         conn.execute("CREATE INDEX IF NOT EXISTS idx_cobr_cliente ON cobrancas(cliente_id)")
         conn.commit()
