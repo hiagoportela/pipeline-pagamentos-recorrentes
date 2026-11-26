@@ -104,7 +104,7 @@ encontrados e de como conferi cada resultado está em [`docs/diario_ia.md`](docs
 ## Como rodar
 
 ```bash
-git clone https://bitbucket.org/hiagoportela/pagamentos-recorrentes.git
+git clone https://bitbucket.org/hiagoportela/pagamentos-recorrentes.git ou https://github.com/hiagoportela/pipeline-pagamentos-recorrentes.git
 cd pagamentos-recorrentes
 python -m venv venv
 venv\Scripts\activate            # Mac/Linux: source venv/bin/activate
@@ -138,4 +138,4 @@ python src/monitor.py            # verifica a saúde do banco
 
 ## Tecnologias
 
-Python (pandas, requests), SQL (SQLite), Git/Bitbucket.
+Python (pandas, requests), SQL (SQLite), Git/Bitbucket, Github
